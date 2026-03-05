@@ -50,4 +50,8 @@ public class Teacher {
                 ", Name: " + name +
                 ", Salary: $" + Salary;
     }
+
+    public void displayInfoTeacher() {
+        System.out.println("ID: " + getID() + ", Name: " + getName() + ", Salary Received: " + getSalaryEarned());
+    }
 }

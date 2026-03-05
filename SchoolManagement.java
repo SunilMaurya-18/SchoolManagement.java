@@ -1,5 +1,7 @@
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 
 class SchoolManagementSystem {
@@ -7,6 +9,7 @@ class SchoolManagementSystem {
         // Create lists for teachers and students
         List<Teacher> teachers = new ArrayList<>();
         List<Student> students = new ArrayList<>();
+
 
         // Create School instance
         School school = new School(teachers, students);
@@ -88,5 +91,45 @@ class SchoolManagementSystem {
         System.out.println("Total Fees Collected: $" + school.getTotalMoneyEarned());
         System.out.println("Total Salaries Paid: $" + school.getTotalMoneySpent());
         System.out.println("Net Balance: $" + (school.getTotalMoneyEarned() - school.getTotalMoneySpent()));
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter Student ID :");
+
+        int SearchID = scanner.nextInt();
+        boolean Found = false;
+        for (Student s : students) {
+            if (s.getID() == SearchID) {
+                s.displayInfo();
+                Found = true;
+                break;
+
+
+            } else {
+                if (!Found) {
+                    System.out.println("Student not found!");
+                }
+            }
+
+        }
+        Scanner scanner1 = new Scanner(System.in);
+        System.out.println("Enter Teacher ID: ");
+
+        int SearchTeacherID = scanner1.nextInt();
+        boolean TeacherFound = false;
+        for (Teacher t : teachers) {
+            if (t.getID() == SearchTeacherID) {
+                t.displayInfoTeacher();
+                TeacherFound = true;
+                break;
+            } else {
+                if (!TeacherFound) {
+                    System.out.println("Teacher not Found!");
+
+                }
+            }
+        }
+
     }
+
+
 }

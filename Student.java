@@ -70,10 +70,13 @@ public class Student {
         return feeTotal - feePaid;
     }
 
+    public void displayInfo() {
+        System.out.println("ID: " + getID() + ", Name: " + getName() + ", Grade: " + getGrade() +
+                ", FeePaid: " + getFeePaid() + ", FeeRemaining: " + getRemainingFee());
+    }
+
     @Override
     public String toString() {
-        return "Student ID: " + ID +
-                ", Name: " + Name +
-                ", Grade: " + Grade;
+        return "ID: " + getID() + ", Name: " + getName() + ", Grade: " + getGrade();
     }
 }

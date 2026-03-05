@@ -47,6 +47,5 @@ public class School {
     }
 
     public void printFinancialReport() {
-        return;
     }
 }
