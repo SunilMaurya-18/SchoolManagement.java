@@ -92,44 +92,25 @@ class SchoolManagementSystem {
         System.out.println("Total Salaries Paid: $" + school.getTotalMoneySpent());
         System.out.println("Net Balance: $" + (school.getTotalMoneyEarned() - school.getTotalMoneySpent()));
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter Student ID :");
 
-        int SearchID = scanner.nextInt();
-        boolean Found = false;
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter Student ID: ");
+        int searchId = sc.nextInt();
+
+        boolean found = false;
+
         for (Student s : students) {
-            if (s.getID() == SearchID) {
+            if (s.getID() == searchId) {
                 s.displayInfo();
-                Found = true;
+                found = true;
                 break;
-
-
-            } else {
-                if (!Found) {
-                    System.out.println("Student not found!");
-                }
-            }
-
-        }
-        Scanner scanner1 = new Scanner(System.in);
-        System.out.println("Enter Teacher ID: ");
-
-        int SearchTeacherID = scanner1.nextInt();
-        boolean TeacherFound = false;
-        for (Teacher t : teachers) {
-            if (t.getID() == SearchTeacherID) {
-                t.displayInfoTeacher();
-                TeacherFound = true;
-                break;
-            } else {
-                if (!TeacherFound) {
-                    System.out.println("Teacher not Found!");
-
-                }
             }
         }
 
+        if (!found) {
+            System.out.println("Student not found!");
+        }
     }
-
-
+    
 }
