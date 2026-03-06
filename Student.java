@@ -79,4 +79,8 @@ public class Student {
     public String toString() {
         return "ID: " + getID() + ", Name: " + getName() + ", Grade: " + getGrade();
     }
+
+    public int getId() {
+        return ID;
+    }
 }

@@ -1,22 +1,24 @@
-import java.sql.SQLOutput;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 
 class SchoolManagementSystem {
+
+    private static Student newStudent;
+
     public static void main(String[] args) {
+
+        System.out.println("===== SCHOOL MANAGEMENT SYSTEM =====\n");
+
         // Create lists for teachers and students
         List<Teacher> teachers = new ArrayList<>();
         List<Student> students = new ArrayList<>();
 
 
-        // Create School instance
         School school = new School(teachers, students);
 
-        System.out.println("===== SCHOOL MANAGEMENT SYSTEM =====\n");
-
-        // Add Teachers
         System.out.println("--- Adding Teachers ---");
         Teacher t1 = new Teacher(101, "John Smith", 5000);
         Teacher t2 = new Teacher(102, "Sarah Johnson", 5500);
@@ -42,6 +44,7 @@ class SchoolManagementSystem {
         Student s4 = new Student(204, "David Garcia", 9);
         Student s5 = new Student(205, "Arpit Jaiswal", 12);
 
+
         school.addStudents(s1);
         school.addStudents(s2);
         school.addStudents(s3);
@@ -52,7 +55,6 @@ class SchoolManagementSystem {
         for (Student student : school.getStudents()) {
             System.out.println(student);
         }
-
         // Process Student Fee Payments
         System.out.println("\n--- Processing Student Fee Payments ---");
         s1.FeePaid(15000);
@@ -80,37 +82,85 @@ class SchoolManagementSystem {
         s5.FeePaid(10000);
         System.out.println(s5.getName() + " paid: $10000, Remaining: $" + s5.getRemainingFee());
 
-        // Print Financial Report
-        System.out.println("\n");
-        school.printFinancialReport();
 
-        // Summary Statistics
-        System.out.println("\n--- Summary Statistics ---");
-        System.out.println("Total Teachers: " + school.getTeachers().size());
-        System.out.println("Total Students: " + school.getStudents().size());
-        System.out.println("Total Fees Collected: $" + school.getTotalMoneyEarned());
-        System.out.println("Total Salaries Paid: $" + school.getTotalMoneySpent());
-        System.out.println("Net Balance: $" + (school.getTotalMoneyEarned() - school.getTotalMoneySpent()));
+        Scanner menu = new Scanner(System.in);
+        while (true) {
+
+            // Print Financial Report
+            System.out.println("\n");
+            school.printFinancialReport();
+
+            // Summary Statistics
+            System.out.println("\n--- Summary Statistics ---");
+            System.out.println("Total Teachers: " + school.getTeachers().size());
+            System.out.println("Total Students: " + school.getStudents().size());
+            System.out.println("Total Fees Collected: $" + school.getTotalMoneyEarned());
+            System.out.println("Total Salaries Paid: $" + school.getTotalMoneySpent());
+            System.out.println("Net Balance: $" + (school.getTotalMoneyEarned() - school.getTotalMoneySpent()));
 
 
-        Scanner sc = new Scanner(System.in);
+            System.out.println("--------MENU---------");
+            System.out.println("1. Add Student");
+            System.out.println("2. Search Student");
+            System.out.println("3. Show all Student");
+            System.out.println("4. Remove Student");
+            System.out.println("5. Exit");
+            System.out.println("Enter your Choice: ");
+            int choice = menu.nextInt();
 
-        System.out.print("Enter Student ID: ");
-        int searchId = sc.nextInt();
 
-        boolean found = false;
+            switch (choice) {
+                case 1:
+                    System.out.println("Enter Student ID: ");
+                    int ID = menu.nextInt();
+                    menu.nextLine();
 
-        for (Student s : students) {
-            if (s.getID() == searchId) {
-                s.displayInfo();
-                found = true;
-                break;
+                    System.out.println("Enter Student Name: ");
+                    String Name = menu.nextLine();
+
+                    System.out.println("Enter Student Grade: ");
+                    int Grade = menu.nextInt();
+
+                    Student s = new Student(ID, Name, Grade);
+                    school.addStudents(s);
+
+                    System.out.println("Student Added Successfully!");
+                    break;
+
+                case 2:
+                    System.out.println("Enter Student ID: ");
+                    Scanner sc = new Scanner(System.in);
+                    int searchID = sc.nextInt();
+                    for (Student student : school.getStudents()) {
+                        if (student.getID() == searchID) {
+                            student.displayInfo();
+                        }
+                    }
+                    break;
+                case 3:
+                    for (Student student : school.getStudents()) {
+                        student.displayInfo();
+                    }
+                    break;
+
+                case 4:
+                    System.out.println("Enter Student ID to delete:");
+                    int deleteId = menu.nextInt();
+
+                    school.removeStudent(deleteId);
+                    break;
+
+                case 5:
+                    System.out.println("Exit");
+                    return;
+
+
             }
-        }
 
-        if (!found) {
-            System.out.println("Student not found!");
         }
     }
-    
+
 }
+
+
+

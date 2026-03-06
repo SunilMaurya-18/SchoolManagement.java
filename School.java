@@ -48,4 +48,26 @@ public class School {
 
     public void printFinancialReport() {
     }
+
+    public void addStudent(Student student) {
+        students.add(student);
+    }
+
+    public void removeStudent(int id) {
+        Student studentToRemove = null;
+
+        for (Student s : students) {
+            if (s.getId() == id) {
+                studentToRemove = s;
+                break;
+            }
+        }
+
+        if (studentToRemove != null) {
+            students.remove(studentToRemove);
+            System.out.println("Student deleted successfully!");
+        } else {
+            System.out.println("Student not found!");
+        }
+    }
 }
