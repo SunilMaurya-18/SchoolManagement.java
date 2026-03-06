@@ -8,6 +8,7 @@ This is a Java-based School Management System built using Object-Oriented Progra
 - Add Students
 - Store Teacher Salary
 - Store Student Grade
+- Search student by using ID
 - Display all Teachers and Students
 - Uses OOP principles like:
   - Classes & Objects
