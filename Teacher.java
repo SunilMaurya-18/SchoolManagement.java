@@ -1,11 +1,11 @@
 public class Teacher {
-    private int ID;
+    private int id;
     private String name;
     private double Salary;
     private double salaryEarned;
 
     public Teacher(int ID, String name, double salary) {
-        this.ID = ID;
+        this.id = ID;
         this.name = name;
         this.Salary = salary;
         this.salaryEarned = 0;
@@ -13,7 +13,7 @@ public class Teacher {
     }
 
     public int getID() {
-        return ID;
+        return id;
     }
 
     public String getName() {
@@ -46,7 +46,7 @@ public class Teacher {
 
     @Override
     public String toString() {
-        return "Teacher ID: " + ID +
+        return "Teacher ID: " + id +
                 ", Name: " + name +
                 ", Salary: $" + Salary;
     }

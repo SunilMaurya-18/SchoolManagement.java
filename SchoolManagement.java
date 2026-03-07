@@ -104,7 +104,11 @@ class SchoolManagementSystem {
             System.out.println("2. Search Student");
             System.out.println("3. Show all Student");
             System.out.println("4. Remove Student");
-            System.out.println("5. Exit");
+            System.out.println("5. Search Teacher");
+            System.out.println("6. Add Teacher");
+            System.out.println("7. Show all Teacher");
+            System.out.println("8. Exit");
+
             System.out.println("Enter your Choice: ");
             int choice = menu.nextInt();
 
@@ -151,7 +155,39 @@ class SchoolManagementSystem {
                     break;
 
                 case 5:
-                    System.out.println("Exit");
+                    System.out.println("Enter Teacher ID: ");
+                    Scanner t = new Scanner(System.in);
+                    int searchTeacher = t.nextInt();
+                    for (Teacher teacher : school.getTeachers()) {
+                        if (teacher.getID() == searchTeacher) {
+                            teacher.displayInfoTeacher();
+                        }
+                    }
+                    break;
+                case 6:
+                    System.out.println("Enter Teacher ID: ");
+                    int id = menu.nextInt();
+                    menu.nextLine();
+
+                    System.out.println("Enter Teacher Name: ");
+                    String name = menu.nextLine();
+
+                    System.out.println("Enter Salary: ");
+                    double Salary = menu.nextInt();
+
+                    Teacher T = new Teacher(id, name, Salary);
+                    school.addTeachers(T);
+
+                    break;
+
+                case 7:
+                    for (Teacher teacher : school.getTeachers()) {
+                        teacher.displayInfoTeacher();
+                    }
+                    break;
+
+                case 8:
+                    System.out.println("Exit!");
                     return;
 
 
