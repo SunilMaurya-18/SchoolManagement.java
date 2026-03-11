@@ -15,6 +15,8 @@ This is a Java-based School Management System built using Object-Oriented Progra
   - Encapsulation
   - Constructors
   - Collections (ArrayList)
+  - Add menu based options
+  - Select options and use
 
 ## 🛠 Technologies Used
 - Java
