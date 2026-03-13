@@ -36,13 +36,13 @@ class SchoolManagementSystem {
             System.out.println(teacher);
         }
 
-        // Add Students
+        
         System.out.println("\n--- Adding Students ---");
         Student s1 = new Student(201, "Alice Williams", 10);
         Student s2 = new Student(202, "Bob Davis", 9);
         Student s3 = new Student(203, "Carol Martinez", 10);
         Student s4 = new Student(204, "David Garcia", 9);
-        Student s5 = new Student(205, "Arpit Jaiswal", 12);
+       
 
 
         school.addStudents(s1);
@@ -79,9 +79,7 @@ class SchoolManagementSystem {
 
         t3.receiveSalary(5200);
         System.out.println(t3.getName() + " received salary: $5200, Total earned: $" + t3.getSalaryEarned());
-        s5.FeePaid(10000);
-        System.out.println(s5.getName() + " paid: $10000, Remaining: $" + s5.getRemainingFee());
-
+      
 
         Scanner menu = new Scanner(System.in);
         while (true) {
